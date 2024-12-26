@@ -5,10 +5,12 @@ export const CustomDataTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const PAGE_SIZE = 10;
-  const noOfpages = data.length / PAGE_SIZE;
+  const noOfpages = Math.ceil(data.length / PAGE_SIZE);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
   const endIndex = startIndex + PAGE_SIZE;
   const cuurentlyDisplayedData = data.slice(startIndex, endIndex);
+  const itemStartIndx = startIndex + 1;
+  const itemEndIndx = startIndex + PAGE_SIZE;
 
   console.log(startIndex, endIndex);
   // console.log(data);
@@ -107,7 +109,21 @@ export const CustomDataTable = () => {
             <tbody></tbody>
           </table>
 
-          <nav aria-label="Page navigation example">
+          <nav
+            aria-label="Page navigation example"
+            className="flex justify-between pt-4 items-center flex-wrap md:flex-row"
+          >
+            <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block full-width md:inline-block md:w-auto">
+              showing{" "}
+              <span className="font-semibold text-gray-50 dark:text-white">
+                {itemStartIndx}-{endIndex}
+              </span>{" "}
+              of
+              <span className="font-semibold text-gray-50 dark:text-white">
+                {data.length}
+              </span>
+            </span>
+
             <ul className="inline-flex -space-x-px text-sm">
               <li>
                 <button
