@@ -9,8 +9,8 @@ export const CustomDataTable = () => {
   const startIndex = (currentPage - 1) * PAGE_SIZE;
   const endIndex = startIndex + PAGE_SIZE;
   const cuurentlyDisplayedData = data.slice(startIndex, endIndex);
-  const itemStartIndx = startIndex + 1;
-  const itemEndIndx = startIndex + PAGE_SIZE;
+  const itemStartIndex = startIndex + 1;
+  const itemEndIndex = Math.min(startIndex + PAGE_SIZE, data.length);
 
   console.log(startIndex, endIndex);
   // console.log(data);
@@ -32,7 +32,7 @@ export const CustomDataTable = () => {
                       type="checkbox"
                       className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
-                    <label for="checkbox-all-search" className="sr-only">
+                    <label htmlFor="checkbox-all-search" className="sr-only">
                       checkbox
                     </label>
                   </div>
@@ -116,7 +116,7 @@ export const CustomDataTable = () => {
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block full-width md:inline-block md:w-auto">
               showing{" "}
               <span className="font-semibold text-gray-50 dark:text-white">
-                {itemStartIndx}-{endIndex}
+                {itemStartIndex}-{itemEndIndex}
               </span>{" "}
               of
               <span className="font-semibold text-gray-50 dark:text-white">
@@ -134,47 +134,24 @@ export const CustomDataTable = () => {
                   Previous
                 </button>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  1
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  2
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  aria-current="page"
-                  className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                >
-                  3
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  4
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                >
-                  5
-                </a>
-              </li>
+              {Array.from({ length: noOfpages }, (item, index) => {
+                return (
+                  <li key={index}>
+                    <button
+                      disabled={currentPage === index + 1}
+                      className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 ${
+                        currentPage == index + 1
+                          ? "bg-blue-700 border border-blue-700 text-white hover:bg-blue-500"
+                          : "bg-white border border-gray-300 hover:bg-blue-700 hover:border hover:border-blue-500 hover:text-white"
+                      }  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
+                      onClick={() => setCurrentPage(index + 1)}
+                    >
+                      {index + 1}
+                    </button>
+                  </li>
+                );
+              })}
+
               <li>
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}

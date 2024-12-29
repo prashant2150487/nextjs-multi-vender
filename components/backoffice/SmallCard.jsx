@@ -11,10 +11,10 @@ function SmallCard({ data }) {
             className={`w-12 h-12 ${data.iconBg} rounded-full items-center flex justify-between p-2`}
           />
         </div>
-        <di classNamev>
+        <div>
           <p>{data.title}</p>
           <h3 className="text-2xl font-bold">{data.sales}</h3>
-        </di>
+        </div>
       </div>
     </div>
   );
