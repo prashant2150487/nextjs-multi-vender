@@ -1,9 +1,23 @@
 import React from "react";
-import { Sun, AlignJustify } from "lucide-react";
+import {
+  Sun,
+  AlignJustify,
+  LayoutDashboard,
+  Settings,
+  LogOut,
+} from "lucide-react";
 import { Bell } from "lucide-react";
 import { User } from "lucide-react";
 import Image from "next/image";
 import UserImage from "../../public/64c47081-446f-4ff7-b811-3bb55cabcb35.jpg";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const Navbar = () => {
   return (
@@ -26,18 +40,39 @@ const Navbar = () => {
           </div>
         </button>
 
-        <button>
-          <User />
-        </button>
-        <button>
-          <Image
-            src={UserImage}
-            alt="avatar"
-            width={40}
-            height={40}
-            className="rounded-full w-8 h-8"
-          />
-        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Image
+              src={UserImage}
+              alt="avatar"
+              width={40}
+              height={40}
+              className="rounded-full w-8 h-8"
+            />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="py-2 px-4 pr-8">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <button className="flex items-center space-x-2">
+                <LayoutDashboard className="mr-2 h-4 w-4" />
+                <span>Dashboard</span>
+              </button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button className="flex items-center space-x-2">
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Edit Profile</span>
+              </button>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <button className="flex items-center space-x-2">
+                <User className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+              </button>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   );
