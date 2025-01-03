@@ -7,15 +7,15 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div>
+    <>
       <Heading title="Dashboard Overview" />
       <div>
-        <LargeCards/>
-        <SmallCards/>
-        <DashboardCharts/>
-        <CustomDataTable/>
+        <LargeCards />
+        <SmallCards />
+        <DashboardCharts />
+        <CustomDataTable />
       </div>
-    </div>
+    </>
   );
 };
 
