@@ -17,8 +17,8 @@ export const CustomDataTable = () => {
   }
   return (
     <div>
-      <h2 className="text-xl font bold mb-4">Recent order</h2>
-      <div className="p-8">
+      <h2 className="text-xl font-bold mb-4 text-slate-800 pt-4 dark:text-white">Recent order</h2>
+      <div className="">
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -109,15 +109,15 @@ export const CustomDataTable = () => {
 
           <nav
             aria-label="Page navigation example"
-            className="flex justify-between pt-4 items-center flex-wrap md:flex-row"
+            className="flex justify-between pt-4 items-center flex-wrap md:flex-row p-3"
           >
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block full-width md:inline-block md:w-auto">
+            <span className="text-sm font-normal text-slate-400 dark:text-gray-400 mb-4 md:mb-0 block full-width md:inline-block md:w-auto">
               showing{" "}
-              <span className="font-semibold text-gray-50 dark:text-white">
+              <span className="font-semibold text-slate-400 dark:text-white">
                 {itemStartIndex}-{itemEndIndex}
               </span>{" "}
-              of
-              <span className="font-semibold text-gray-50 dark:text-white">
+              of{" "}
+              <span className="font-semibold text-slate-400 dark:text-white">
                 {data.length}
               </span>
             </span>
@@ -139,7 +139,7 @@ export const CustomDataTable = () => {
                       disabled={currentPage === index + 1}
                       className={`flex items-center justify-center px-3 h-8 leading-tight text-gray-500 ${
                         currentPage == index + 1
-                          ? "bg-blue-700 border border-blue-700 text-white hover:bg-blue-500"
+                          ? "bg-blue-700 dark:bg-blue-700 border border-blue-700 text-white hover:bg-blue-500"
                           : "bg-white border border-gray-300 hover:bg-blue-700 hover:border hover:border-blue-500 hover:text-white"
                       }  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white`}
                       onClick={() => setCurrentPage(index + 1)}
