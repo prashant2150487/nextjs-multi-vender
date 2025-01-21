@@ -1,14 +1,17 @@
+"use client"
 import Navbar from "@/components/backoffice/Navbar";
 import Sidebar from "@/components/backoffice/Sidebar";
-import React from "react";
+import React, { useState } from "react";
 
 const Layout = ({ children }) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+  console.log(showSidebar);
   return (
     <div className="flex flex-row">
-      <Sidebar />
+      <Sidebar showSidebar={showSidebar} />
       <div className="ml-[14.25rem] w-full">
-        <Navbar />
-        <main className="p-8 bg-white dark:bg-slate-900  text-slate-50 min-h-screen mt-16">
+        <Navbar setShowSidebar={setShowSidebar} />
+        <main className="p-8 bg-white dark:bg-slate-900 text-slate-50 min-h-screen mt-16">
           {children}
         </main>
       </div>

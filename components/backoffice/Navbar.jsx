@@ -1,3 +1,4 @@
+"use strict";
 import React from "react";
 import {
   Sun,
@@ -21,10 +22,10 @@ import {
 } from "../ui/dropdown-menu";
 import ThemeSwitcher from "../ThemeSwitcherBtn";
 
-const Navbar = () => {
+const Navbar = ({ setShowSidebar }) => {
   return (
     <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 h-20 px-8 py-8 fixed top-0 left-60 right-0 text-green-600 dark:text-green-900">
-      <button>
+      <button onClick={() => setShowSidebar((prev) => !prev)}>
         <AlignJustify />
       </button>
 
@@ -33,10 +34,10 @@ const Navbar = () => {
 
         <DropdownMenu>
           <DropdownMenuTrigger className="relative inline-flex items-center p-3 text-sm font-medium text-center rounded-lg dark:focus:ring-blue-800">
-              <Bell />
-              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-green-600 bg-red-500 border-2 border-white rounded-full -top-0 end-6 dark:border-gray-900">
-                20
-              </div>
+            <Bell />
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-green-600 bg-red-500 border-2 border-white rounded-full -top-0 end-6 dark:border-gray-900">
+              20
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuLabel>Notifications</DropdownMenuLabel>
