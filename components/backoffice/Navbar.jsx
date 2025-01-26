@@ -22,10 +22,10 @@ import {
 } from "../ui/dropdown-menu";
 import ThemeSwitcher from "../ThemeSwitcherBtn";
 
-const Navbar = ({ setShowSidebar }) => {
+const Navbar = ({ setShowSidebar, showSidebar }) => {
   return (
-    <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 h-20 px-8 py-8 fixed top-0 left-60 right-0 text-green-600 dark:text-green-900">
-      <button onClick={() => setShowSidebar((prev) => !prev)}>
+    <div className="flex items-center justify-between bg-gray-100 dark:bg-slate-800 h-20 px-8 py-8 fixed top-0 left-0 sm:left-60 right-0 text-green-600 dark:text-green-900">
+      <button onClick={() => setShowSidebar(!showSidebar)}>
         <AlignJustify />
       </button>
 
