@@ -1,7 +1,7 @@
 import React from "react";
 
-const page = () => {
+const Coupons = () => {
   return <div>Coupan</div>;
 };
 
-export default page;
+export default Coupons;
