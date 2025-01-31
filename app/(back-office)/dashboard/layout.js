@@ -1,6 +1,6 @@
 "use client"
-import Navbar from "@/components/backoffice/Navbar";
-import Sidebar from "@/components/backoffice/Sidebar";
+import Navbar from "../../../components/backoffice/Navbar";
+import Sidebar from "../../../components/backoffice/Sidebar";
 import React, { useState } from "react";
 
 const Layout = ({ children }) => {
