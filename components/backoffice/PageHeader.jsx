@@ -3,7 +3,7 @@ import Heading from "./Heading";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 
-export const PageHeader = ({heading,linkTitle,href}) => {
+export const PageHeader = ({ heading, linkTitle, href }) => {
   return (
     <>
       <div className="flex justify-between items-center py-4">
@@ -17,6 +17,6 @@ export const PageHeader = ({heading,linkTitle,href}) => {
           {linkTitle}
         </Link>
       </div>
-     </>
+    </>
   );
 };
