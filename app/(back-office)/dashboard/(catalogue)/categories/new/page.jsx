@@ -7,7 +7,7 @@ import { TextInput } from "../../../../../../components/backoffice/FormInputs/Te
 import { useForm } from "react-hook-form";
 import { TextAreaInput } from "../../../../../../components/backoffice/FormInputs/TextAreaInput";
 import { SubmitButton } from "../../../../../../components/backoffice/FormInputs/SubmitButton";
-
+import { ImageInput } from "../../../../../../components/backoffice/FormInputs/ImageInput";
 const NewCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -24,7 +24,7 @@ const NewCategory = () => {
         ...data,
         slug,
       };
-      console.log(categoryData,slug);
+      console.log(categoryData, slug);
       // Here you would typically send the data to your API
       // await createCategory(categoryData);
       // Handle success (e.g., show a success message, redirect)
@@ -63,6 +63,7 @@ const NewCategory = () => {
             buttonTitle="Create Category"
             loadingButtonTitle="Creating category please wait..."
           />
+          <ImageInput label="add"/>
         </div>
       </form>
     </div>
