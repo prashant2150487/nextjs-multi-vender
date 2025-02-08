@@ -8,8 +8,11 @@ import { useForm } from "react-hook-form";
 import { TextAreaInput } from "../../../../../../components/backoffice/FormInputs/TextAreaInput";
 import { SubmitButton } from "../../../../../../components/backoffice/FormInputs/SubmitButton";
 import { ImageInput } from "../../../../../../components/backoffice/FormInputs/ImageInput";
+
 const NewCategory = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -23,8 +26,10 @@ const NewCategory = () => {
       const categoryData = {
         ...data,
         slug,
+        imageUrl,
       };
-      console.log(categoryData, slug);
+      console.log(categoryData);
+
       // Here you would typically send the data to your API
       // await createCategory(categoryData);
       // Handle success (e.g., show a success message, redirect)
@@ -58,12 +63,17 @@ const NewCategory = () => {
             errors={errors}
             isRequired={true}
           />
+          <ImageInput
+            label="Category Image"
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endPoint="categoryImageUploader"
+          />
           <SubmitButton
             isLoading={isLoading}
             buttonTitle="Create Category"
             loadingButtonTitle="Creating category please wait..."
           />
-          <ImageInput label="add"/>
         </div>
       </form>
     </div>

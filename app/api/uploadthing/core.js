@@ -1,8 +1,8 @@
-import { createUploadthing } from "@uploadthing/core";
+import { createUploadthing } from "uploadthing/next";
 
 const f = createUploadthing();
 export const ourFileRouter = {
-  imageUploader: f({
+  categoryImageUploader: f({
     image: { maxFileSize: "1MB" },
   }).onUploadComplete(async ({ metadata, file }) => {
     // This code RUNS ON YOUR SERVER after upload
@@ -12,3 +12,4 @@ export const ourFileRouter = {
     return { uploadedBy: metadata.userId };
   }),
 };
+    
