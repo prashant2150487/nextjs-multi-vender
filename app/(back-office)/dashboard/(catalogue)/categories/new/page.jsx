@@ -10,17 +10,18 @@ import { SubmitButton } from "../../../../../../components/backoffice/FormInputs
 import { ImageInput } from "../../../../../../components/backoffice/FormInputs/ImageInput";
 
 const NewCategory = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
 
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
   async function onSubmit(data) {
-    setIsLoading(true);
+    setLoading(true);
     try {
       const slug = generateSlug({ title: data.title });
       const categoryData = {
@@ -29,15 +30,12 @@ const NewCategory = () => {
         imageUrl,
       };
       console.log(categoryData);
-
-      // Here you would typically send the data to your API
-      // await createCategory(categoryData);
-      // Handle success (e.g., show a success message, redirect)
+      makePostRequest(setLoading, "api/categories", data, "Category", reset);
     } catch (error) {
       console.error("Error creating category:", error);
       // Handle error (e.g., show an error message)
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }
 
@@ -70,7 +68,7 @@ const NewCategory = () => {
             endPoint="categoryImageUploader"
           />
           <SubmitButton
-            isLoading={isLoading}
+            isLoading={loading}
             buttonTitle="Create Category"
             loadingButtonTitle="Creating category please wait..."
           />
