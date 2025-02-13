@@ -10,7 +10,7 @@ const Coupons = () => {
         href="/dashboard/coupons/new"
         linkTitle="Add Coupons"
       />
-      {/* <TableActions /> */}
+      <TableActions />
     </>
   );
 };
