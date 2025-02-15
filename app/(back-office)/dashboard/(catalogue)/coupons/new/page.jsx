@@ -8,28 +8,27 @@ import { useForm } from "react-hook-form";
 import { TextAreaInput } from "../../../../../../components/backoffice/FormInputs/TextAreaInput";
 import { SubmitButton } from "../../../../../../components/backoffice/FormInputs/SubmitButton";
 import { ImageInput } from "../../../../../../components/backoffice/FormInputs/ImageInput";
-
+import { generateCouponCode } from "../../../../../../lib/generateCouponCode"
 const NewCoupon = () => {
     const [loading, setLoading] = useState(false);
-    const [imageUrl, setImageUrl] = useState("");
+    const [couponCode, setCouponCode] = useState(generateCouponCode())
 
     const {
         register,
         reset,
         handleSubmit,
+        watch,
         formState: { errors },
     } = useForm();
 
     async function onSubmit(data) {
         setLoading(true);
         try {
-            const slug = generateSlug({ title: data.title });
-            const categoryData = {
-                ...data,
-                slug,
-            };
+            const slug = generateCouponCode()
+
+
             console.log(categoryData);
-            makePostRequest(setLoading, "api/categories", data, "Category", reset);
+            // makePostRequest(setLoading, "api/categories", data, "Category", reset);
         } catch (error) {
             console.error("Error creating category:", error);
             // Handle error (e.g., show an error message)
@@ -53,7 +52,7 @@ const NewCoupon = () => {
                         errors={errors}
                         isRequired={true}
                     />
-                    
+
                     <TextInput
                         label="Coupon Code"
                         name="couponCode"
@@ -62,7 +61,7 @@ const NewCoupon = () => {
                         isRequired={true}
                         className="w-full"
                     />
-                     <TextInput
+                    <TextInput
                         label="Coupon Expiry Date"
                         name="expiryDate"
                         type="date"
@@ -71,7 +70,7 @@ const NewCoupon = () => {
                         isRequired={true}
                         className="w-full"
                     />
-                    <SubmitButton 
+                    <SubmitButton
                         isLoading={loading}
                         buttonTitle="Create Coupon"
                         loadingButtonTitle="Creating Coupon please wait..."
